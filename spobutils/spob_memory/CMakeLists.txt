@@ -1,0 +1,21 @@
+project(spob_memory)
+
+add_library(${PROJECT_NAME} SHARED
+    ${PROJECT_NAME}.c
+)
+
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/spobutils>
+)
+
+install(TARGETS ${PROJECT_NAME}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+install(FILES
+    ${PROJECT_NAME}.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/spobutils
+)
+
